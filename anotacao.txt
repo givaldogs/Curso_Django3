@@ -1,0 +1,97 @@
+diretorio do Curso
+--------------------
+C:\Curso_Django_Udemy
+
+para criar uma virtual m
+--------------------------------
+Na pasta C:\Curso_Django_Udemy
+digite python -m venv venv
+
+-----------------------------
+
+para ativar virtual m
+
+diretorio
+------------
+C:\Curso_Django_Udemy\venv\Scripts>activate
+digite activate
+
+
+para desativar
+----------------
+deactivate
+---------------
+
+* Para executar o servidor Djanto
+
+Criar um app
+(venv) C:\Curso_Django_Udemy\blog>
+python manage.py runserver
+
+---------------------------------
+para criar o projeto BLOG  no django 
+C:\Curso_Django_Udemy
+django-admin starproject blog
+-----------------------------
+nova versao pip
+
+python.exe -m pip install --upgrade pip
+=============================================
+
+para testar o django na minha minha maquina
+no google abre uma pagina e digite
+http://127.0.0.1:8000/
+
+===============================
+
+aula 5
+* popular o banco de dados :
+(venv) C:\Curso_Django_Udemy\blog> -> python manage.py migrate
+
+* criar usuario:
+(venv) C:\Curso_Django_Udemy\blog>
+python manage.py createsuperuser
+Usuario gival
+senha Familiaggs
+
+ Criar um app
+(venv) C:\Curso_Django_Udemy\blog>
+python manage.py startapp website
+
+-----------------------------------
+
+criar model
+(venv) C:\Curso_Django_Udemy\blog>
+python manage.py makemigrations
+- ira' criar o model Post que esta no models.py
+
+depois executa o migrate para criar a tabela no
+banco de dados DB.SQLITE
+(venv) C:\Curso_Django_Udemy\blog>
+python manage.py migrate
+=================================
+
+-------------------
+*******************************************************************************************
+GIT HUB
+
+…or create a new repository on the command line
+echo "# Curso_Django3" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/givaldogs/Curso_Django3.git
+git push -u origin main
+
+
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/givaldogs/Curso_Django3.git
+git branch -M main
+git push -u origin main
+
+
+
+
+
