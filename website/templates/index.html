@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+</head>
+<body>
+    <h1>TCC UNIVESP - BLOG</h1>
+    {{name}}
+
+    <ol>
+        {% for item in lista_tecnologias %}
+            {% if item == 'Django' %}
+                <li><b>{{item}}</b></li>
+            {% else %}
+                <li>
+                    {{item}}
+                </li>
+            {% endif %}
+        {% endfor %} 
+    </ol>
+    
+</body>
+</html>
