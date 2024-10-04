@@ -74,6 +74,9 @@ python manage.py migrate
 -------------------
 *******************************************************************************************
 GIT HUB
+Professor Nelio alves
+https://www.youtube.com/watch?v=_hZf1teRFNg
+-------------------------
 
 …or create a new repository on the command line
 echo "# Curso_Django3" >> README.md
@@ -92,6 +95,9 @@ git branch -M main
 git push -u origin main
 
 
+git remote add origin https://github.com/givaldogs/Curso_Django3.git
 
+
+Personalizando o Django admin e utilizando novo recurso da versao 3
 
 
