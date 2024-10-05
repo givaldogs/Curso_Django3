@@ -94,10 +94,10 @@ git remote add origin https://github.com/givaldogs/Curso_Django3.git
 git branch -M main
 git push -u origin main
 
-
+https://github.com/givaldogs/Curso_Django3
 git remote add origin https://github.com/givaldogs/Curso_Django3.git
 
 
-Personalizando o Django admin e utilizando novo recurso da versao 3
+Aula 14- Personalizando o Django admin e utilizando novo recurso da versao 3
 
 
