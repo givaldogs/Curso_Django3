@@ -18,7 +18,8 @@ class Post(models.Model):
         choices=Categories.choices,
         default=Categories.GR,
     )
-
+    deleted = models.BooleanField(default=True)
+    
     def __str__(self):
         return self.title
     
