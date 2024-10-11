@@ -100,4 +100,9 @@ git remote add origin https://github.com/givaldogs/Curso_Django3.git
 
 Aula 14- Personalizando o Django admin e utilizando novo recurso da versao 3
 
+------------------- aula 16, site template do blog
+http://htmlSup.net/strata
+---------------
+=========================
+
 

@@ -1,0 +1,86 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=no"/>
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+
+    <!--<title>Blog</title> -->
+</head>
+<body class="is-preload">
+    <!-- Header-->
+     <header id="header">
+        <div class="inner">
+            <a href="#" class="image avatar">
+                <img src="{% static 'images/avatar.jpg' %}"
+            alt="" /></a>
+            <h1><strong>Curso de Django 3</strong>, simplificando o desenvolvimento <br />
+                do zero a nuvem <br />
+                criado por <a href="http://htmlSup.net">Univesp trabalho TCC></a>
+            </h1>
+
+        </div>
+     </header>
+
+    <!-- Main-->
+       <div id="main">
+        <!-- One-->
+         <section id="One">
+            <header class="major">
+                <h2>{{post.title}}</h2>
+                <h4>{{post.sub_title}}</h4>
+            </header>
+            <p> {{ post.content }}</p>
+            <ul class="actions">
+                <li> <a href="{% url 'home_blog' %}" class="button">Voltar</a></li>
+            </ul>
+         </section>
+        </div>
+    
+       
+    <!-- Folter-->
+       <footer id="folter">
+            <div class="inner">
+                <ul class="icons">
+                    <li>
+                        <a href="#" class="icon brands fa-twitter">
+                            <span class="label">Twitter</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="icon brands fa-github">
+                            <span class="label">Github</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="icon brands fa-dribbble">
+                            <span class="label">Dribbble</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="icon solid fa-envelope">
+                            <span class="label">Email</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="copyright">
+                    <li>&copy; Untitled</li>
+                    <li>
+                        Design: <a href="https://htmlSup.net>">HTML5 UP</a>
+                    </li>
+                </ul>
+            </div>
+       </footer>
+    <!-- Scripts -->  
+       <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+       <script src="{% static 'assets/js/jquery.poptrox.min.js' %}"></script>
+       <script src="{% static 'assets/js/browser.min.js' %}"></script>
+       <script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
+       <script src="{% static 'assets/js/util.js' %}"></script>
+       <script src="{% static 'assets/js/main.js' %}"></script>
+    
+</body>
+</html>
