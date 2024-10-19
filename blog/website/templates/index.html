@@ -16,8 +16,8 @@
             <a href="#" class="image avatar">
                 <img src="{% static 'images/avatar.jpg' %}"
             alt="" /></a>
-            <h1><strong>Curso de Django 3</strong>, simplificando o desenvolvimento <br />
-                do zero a nuvem <br />
+            <h1><strong>BELLAS UNHAS</strong>,nail designer <br />
+                embeleza <br />
                 criado por <a href="http://htmlSup.net">Univesp trabalho TCC></a>
             </h1>
 
@@ -71,7 +71,9 @@
                 <p>Accum pellentesque commodo blandit enim arcu non at amet id arcu magna. </p>
                 <div class="row">
                     <div class="col-8 col-12-small">
-                        <form method="post" action="#">
+                        <form method="post" action="{% url 'save_form' %}">
+                            {% csrf_token %}
+                            <input type="submit" value="Send Menssage" /> 
                             <div class="row gtr-uniform gtr-50">
                                 <div class="col-6 col-12-xsmall">
                                     <input type="text" name="name" id="name"
@@ -88,12 +90,8 @@
                                         placeholder="Message">                                   
                                 </div>
                             </div>
-                        </form>
-                        <ul class="actions">
-                            <li>
-                                <input type="submit" value="Send Menssage" />
-                            </li>
-                        </ul>
+                            <input type="submit" value="Send Menssage" />                            
+                        </form>                        
                     </div>
                     <div class="col-4 col-12-small">
                         <ul class="labeled-icons">

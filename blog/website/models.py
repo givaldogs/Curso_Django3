@@ -8,6 +8,15 @@ class Categories(models.TextChoices):
     CR = 'CR', 'Curiosidade'
     GR = 'GR', 'Geral'
     
+class Contact(models.Model):
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self) -> str:
+        return self.name
+    
+
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
@@ -18,7 +27,7 @@ class Post(models.Model):
         choices=Categories.choices,
         default=Categories.GR,
     )
-    deleted = models.BooleanField(default=True)
+    deleted = models.BooleanField(default=False)
     
     def __str__(self):
         return self.title
