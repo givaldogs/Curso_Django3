@@ -23,5 +23,6 @@ urlpatterns = [
     path('hello/', hello_world),
     path('dataHora/', current_datetime),
     path('blog/', include('website.urls')),
+
 ]
 

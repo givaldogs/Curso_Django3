@@ -30,3 +30,7 @@ def save_form(request):
             message=request.POST['message']
       )
       return render(request, 'contact_success.html', {'name_contact': name})
+
+def contato(request):
+      return render(request, 'index.html')
+

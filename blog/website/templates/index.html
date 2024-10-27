@@ -1,194 +1,91 @@
 {% load static %}
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=no"/>
-    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
-
-    <!--<title>Blog</title> -->
+	<title>Bellas Unhas - Blog</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/estilo.css' %}">
 </head>
-<body class="is-preload">
-    <!-- Header-->
-     <header id="header">
-        <div class="inner">
-            <a href="#" class="image avatar">
-                <img src="{% static 'images/avatar.jpg' %}"
-            alt="" /></a>
-            <h1><strong>BELLAS UNHAS</strong>,nail designer <br />
-                embeleza <br />
-                criado por <a href="http://htmlSup.net">Univesp trabalho TCC></a>
-            </h1>
+<body>
 
-        </div>
-     </header>
+	<div id="area-cabecalho">
+		
+		<div id="area-logo">
+			<h1>Bellas <span class="branco"> Unhas</span></h1>
+		</div>
+		<div id="area-menu">
+			<a href="index.html">Home</a>
+			<a href="{% url 'contato' %}">Contato</a>
+			<a href="celulares.html">Celulares</a>
+			<a href="informatica.html">Informática</a>
+			<a href="eletronicos.html">Eletrônicos</a>
+		</div>
 
-    <!-- Main-->
-       <div id="main">
-        <!-- One-->
-         <section id="One">
-            <header class="major">
-                <h2>trabalho TCC Django framework  Blog</h2>
-            </header>
-            <p> Software full stack salao de beleza </p>
-            <ul class="actions">
-                <li> <a href="https://www.linkedin.com" class="button"> Learn More</a></li>
-            </ul>
-         </section>
-        </div>
-    
-        <!-- Two -->
-    <section id="two">
-        <h2>Posts</h2>
-        <div class="row">
-            {% for post in posts %}
-                <article class="col-6 col-12-xsmall work-item">
-                    <a href="{% static 'images/fulls/01.jpg' %}"
-                    class="image fit thumb">
-                    <img src="{% static 'images/thumbs/01.jpg' %}"
-                    alt="" /></a>
-                    <h3>{{ post.title }}</h3>
-                    <p>{{ post.sub_title }}</p>
-                    <span>{{ post.get_category_label }}</span>        
-                </article>
-                <ul class="actions">
-                   <li> <a href="{% url 'post_detail' post.id %}" class="button">Read More</a></li>
-                </ul>
-            {% endfor %}
+	</div>
 
-        </div>
-            <ul class="actions">
-                <li><a href="#" class="button">Full Portifolio</a></li>
-            </ul>
+	<div id="area-principal">
 
-    </section>
+		<div id="area-postagens">
+			
+			<!-- abertura postagem -->
+			<div class="postagem">
+				{% for post in posts %}
+					<h2>{{ post.title }}</h2>
+					<span class="data-postagem">postado 25 outubro 2024</span>
+					<img width="100px" src="{% static 'images/imagem6.jpeg' %}">
+					<p>
+						{{ post.sub_title }}
+						<br>					
+						{{ post.get_category_label }}
+					</p>
+					
+					<a href="{% url 'post_detail' post.id %}" class="button">Leia mais</a>
+					<br><br>
+					<hr>
+                     
+					<!--<a href="">Leia mais</a>-->
+					
+				{% endfor %}
+			</div><!--// fechamento postagem -->
 
-            
-    <!-- Three -->
-            <section id="three">
-                <h2>Get in touch</h2>
-                <p>Accum pellentesque commodo blandit enim arcu non at amet id arcu magna. </p>
-                <div class="row">
-                    <div class="col-8 col-12-small">
-                        <form method="post" action="{% url 'save_form' %}">
-                            {% csrf_token %}
-                            <input type="submit" value="Send Menssage" /> 
-                            <div class="row gtr-uniform gtr-50">
-                                <div class="col-6 col-12-xsmall">
-                                    <input type="text" name="name" id="name"
-                                    placeholder="Name"
-                                    >                                    
-                                </div>
-                                <div class="col-6 col-12-xsmall">
-                                    <input type="email" name="email" id="email"
-                                    placeholder="E-mail"
-                                    >                                    
-                                </div>
-                                <div class="col-12">
-                                    <textarea name="message" id="message"
-                                        placeholder="Message">                                   
-                                </div>
-                            </div>
-                            <input type="submit" value="Send Menssage" />                            
-                        </form>                        
-                    </div>
-                    <div class="col-4 col-12-small">
-                        <ul class="labeled-icons">
-                            <li>
-                                <h3 class="icon solid fa-home">
-                                    <span class="label">Address:</span>
-                                    1234 Somewhere Rd. <br/>
-                                    United States
-                                </h3>
-                            </li>
-                            <li>
-                                <h3 class="icon solid fa-mobile-alt"><span
-                                    class="label">Phone</span>
-                                </h3>
-                                000-000-0000
-                            </li>
-                            <li>
-                                <h3 class="icon solid fa-envelope"><span
-                                    class="label">Email</span>
-                                </h3>
-                                <a href="#">hello@United.tld</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+		</div>
+		<div id="area-lateral">
+			
 
-    <!-- Folter-->
-       <footer id="folter">
-            <div class="inner">
-                <ul class="icons">
-                    <li>
-                        <a href="#" class="icon brands fa-twitter">
-                            <span class="label">Twitter</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="icon brands fa-github">
-                            <span class="label">Github</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="icon brands fa-dribbble">
-                            <span class="label">Dribbble</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="icon solid fa-envelope">
-                            <span class="label">Email</span>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="copyright">
-                    <li>&copy; Untitled</li>
-                    <li>
-                        Design: <a href="https://htmlSup.net>">HTML5 UP</a>
-                    </li>
-                </ul>
-            </div>
-       </footer>
-    <!-- Scripts -->  
-       <script src="{% static 'assets/js/jquery.min.js' %}"></script>
-       <script src="{% static 'assets/js/jquery.poptrox.min.js' %}"></script>
-       <script src="{% static 'assets/js/browser.min.js' %}"></script>
-       <script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
-       <script src="{% static 'assets/js/util.js' %}"></script>
-       <script src="{% static 'assets/js/main.js' %}"></script>
+			<div class="conteudo-lateral">
+				<h3>Postagens recentes</h3>
+				
+				<div class="postagem-lateral">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<a href="">Leia mais</a>
+				</div>
 
-<!--
-       <h1>TCC UNIVESP - BLOG</h1>
-    {{name}}
+				<div class="postagem-lateral" style="border-bottom: none;">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<a href="">Leia mais</a>
+				</div>
 
-    <ol>
-        {% for item in lista_tecnologias %}
-            {% if item == 'Django' %}
-                <li><b>{{item}}</b></li>
-            {% else %}
-                <li>
-                    {{item}}
-                </li>
-            {% endif %}
-        {% endfor %}
-    </ol>
+			</div>
 
-    {% for post in posts %}
-        <h2>
-            {{post.title}}
-        </h2>
-        <h3>
-            {{ post.sub_title}}
-        </h3>
-        <p>
-            {{post.content}}
-        </p>
-    {% endfor %}
-    
--->
-    
+			<div class="conteudo-lateral">
+				<h3>Categorias</h3>
+				
+				<a href="">Jogos</a><br>
+				<a href="">Celulares</a><br>
+				<a href="">Informática</a><br>
+				<a href="">Eletrônicos</a><br>
+				<a href="">Jogos</a><br>
+
+			</div>
+
+
+		</div>
+
+		<div id="rodape">
+			Todos os direitos reservados
+		</div>
+
+	</div>
+
 </body>
 </html>
