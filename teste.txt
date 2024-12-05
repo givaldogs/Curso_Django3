@@ -1,0 +1,129 @@
+/* Container das postagens */
+.postagem-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;  /* Espaçamento entre as colunas */
+}
+
+/* Cada item da postagem */
+.postagem {
+    display: flex;
+    flex-direction: column;
+    width: 48%;  /* Cada postagem ocupará 48% da largura do container (ajustável) */
+}
+
+/* Estilo do conteúdo da postagem */
+.post-content {
+    display: flex;
+    align-items: center;  /* Alinha a imagem e o texto verticalmente */
+}
+
+/* Imagem das postagens */
+.post-content img {
+    margin-right: 15px;  /* Espaço entre a imagem e o texto */
+    max-width: 100px;
+    height: auto;
+}
+====================================================
+<!-- Abertura postagem -->
+<div class="postagem-container">
+    <div class="postagem">
+        {% for post in posts %}
+            <div class="post-item">
+                <h2>{{ post.title }}</h2>
+                
+                <div class="post-content">
+                    <!-- Verifica se há imagem -->
+                    {% if post.imagem %}
+                        <img src="{{ post.imagem.url }}" alt="Imagem do post" width="100px" height="120px">
+                    {% else %}
+                        <img width="100px" height="120px" src="{% static 'images/imagem8.jpeg' %}">
+                    {% endif %}
+                    
+                    <p>
+                        {{ post.sub_title }}
+                        <br>                    
+                        {{ post.get_category_label }}
+                    </p>
+                </div>
+
+                <a href="{% url 'post_detail' post.id %}" class="button">Leia mais</a>
+                <br><br>
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+</div><!--// Fechamento postagem -->
+*********************************************************************************************************************************************************************************
+Para exibir as postagens em duas colunas no seu template, você pode usar um pouco de CSS para definir o layout das postagens. A maneira mais simples de fazer isso é utilizando o `flexbox` ou o `grid` do CSS.
+
+Aqui está um exemplo de como você pode modificar o seu código:
+
+1. **Modificação do HTML**: Mantenha o código do seu template quase igual, mas ajuste a estrutura da `div` que contém as postagens para que você possa facilmente aplicar um layout de duas colunas.
+
+2. **CSS para criar as duas colunas**: Vamos adicionar o CSS necessário para exibir as postagens em duas colunas.
+
+### Modificação no HTML:
+Vamos fazer a mudança no bloco onde as postagens são exibidas, para que elas possam ser dispostas em colunas:
+
+```html
+<div id="area-postagens">
+    <div class="postagens-grid">
+        {% for post in posts %}
+            <div class="postagem">
+                <h2>{{ post.title }}</h2>
+
+                {% if post.imagem %}
+                    <img src="{{ post.imagem.url }}" alt="Imagem do post" width="100px" height="120px">
+                {% else %}
+                    <img width="100px" height="120px" src="{% static 'images/imagem8.jpeg' %}">
+                {% endif %}
+
+                <p>
+                    {{ post.sub_title }}
+                    <br>
+                    {{ post.get_category_label }}
+                </p>
+
+                <a href="{% url 'post_detail' post.id %}" class="button">Leia mais</a>
+                <br><br>
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+```
+
+### CSS para o layout de 2 colunas:
+Agora, você precisa adicionar um estilo CSS para exibir as postagens em duas colunas. O código abaixo usa `grid` para isso. 
+Você pode adicionar este estilo diretamente no seu arquivo CSS (`assets/css/estilo.css`), ou dentro de uma tag `<style>` no cabeçalho do HTML.
+
+```css
+#area-postagens {
+    width: 100%;
+}
+
+.postagens-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cria duas colunas de largura igual */
+    gap: 20px; /* Espaçamento entre as colunas */
+}
+
+.postagem {
+    border: 1px solid #ddd; /* Opcional, para definir borda nas postagens */
+    padding: 10px; /* Espaçamento interno */
+    background-color: #f9f9f9; /* Fundo suave para as postagens */
+}
+```
+
+### Explicação:
+- **`display: grid;`**: Cria um container com um layout de grade (grid).
+- **`grid-template-columns: repeat(2, 1fr);`**: Define que a grade terá duas colunas, com cada coluna ocupando 1 fração do espaço disponível (tamanho igual).
+- **`gap: 20px;`**: Define o espaçamento entre as colunas e linhas da grade.
+- **`postagem`**: Define o estilo de cada postagem dentro da grade, como borda, padding e cor de fundo.
+
+### Como funciona:
+- As postagens serão exibidas em duas colunas. Quando houver mais de uma postagem, o grid automaticamente organiza os itens em colunas.
+- O `gap` entre as colunas e as postagens proporciona um espaçamento agradável, mas você pode ajustar conforme necessário.
+
+Essa abordagem é simples e deve funcionar bem para a maioria dos layouts de blog.

@@ -14,6 +14,7 @@ body {
 **** Layout ****
 */
 #area-cabecalho {
+	width: 95%;
 	background-color: #f7b600;
 	padding: 15px;
 	text-align: center;
@@ -24,30 +25,38 @@ body {
 }
 
 #area-principal {
-	width: 920px;
+	width: 95%;
 	margin: 0 auto;
 	padding: 15px;
+	float: left;
+	
 }
 
 #area-postagens {
-	width: 660px;
+	width: 75%;
 	float: left;
+	
 }
 
 #area-lateral {
-	width: 240px;
+	width: 24%;
 	float: right;
+	
 }
 
 .postagem{
-	padding: 20px;
-	margin-bottom: 20px;
-	background: white;
+	border: 1px solid #ddd; /* Opcional, para definir borda nas postagens */
+    padding: 05px; /* Espaçamento interno */
+    background-color: #f9f9f9; /* Fundo suave para as postagens */
 }
-
+.postagens-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cria duas colunas de largura igual */
+    gap: 10px; /* Espaçamento entre as colunas */
+}
 .conteudo-lateral {
 	background: white;
-	padding: 10px;
+	padding: 05px;
 	margin-bottom: 20px;
 }
 

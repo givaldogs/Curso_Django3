@@ -32,5 +32,8 @@ def save_form(request):
       return render(request, 'contact_success.html', {'name_contact': name})
 
 def contato(request):
-      return render(request, 'index.html')
+      return render(request, 'contato.html')
+
+def sobre_bellas_unhas(request):
+      return render(request, 'sobre_bellas_unhas.html')
 

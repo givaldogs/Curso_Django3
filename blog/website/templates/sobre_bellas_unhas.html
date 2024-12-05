@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bellas Unhas - Sobre</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/estilo.css' %}">
+</head>
+<body>
+
+	<div id="area-cabecalho">
+		
+		<div id="area-logo">
+			<h1>Bellas <span class="branco"> Unhas</span></h1>
+		</div>
+		
+		<div id="area-menu">
+			<!--<a href="/blog">Home</a>-->
+			<a href="{% url 'home_blog' %}">Home</a>			
+			<a href="">Blog</a>
+			<a href="{% url 'sobre' %}">Sobre</a>
+			<a href="{% url 'contato' %}">Contato</a>
+		</div>
+	</div>
+
+	<div id="area-principal">
+
+		<div id="area-postagens">
+
+            <h2>Sobre a Bellas Unhas</h2>
+			<p><br>
+			<strong>O QUE É UMA NAIL DESIGNER? </strong>	<br><br>
+Ao longo de muito tempo em que cuidar das unhas eram apenas tirar cutículas e pintar as unhas. Agora os clientes que vão atrás desses serviços têm a opção de alongar  suas unhas com vários tipos de técnicas, incluindo: fibra de vidro, acrilicas, tips, gel, entre outras formas. 
+Uma nail designer é uma profissional especializada em estética e design em unhas, responsáveis por criar decorações, aplicar técnicas de embelezamento e o mais importante, de cuidados com as unhas, uma nail designer vai muito além do que apenas uma esmaltação simples em suas clientes. Em busca destes clientes o presente projeto fez uma pesquisa de campo para entender melhor as necessidades dos clientes, os mesmos relatam a falta de  divulgação e  informações sobre os serviços, assim surgiu a ideia da criação de um  Blog que seria o Marketing Digital. 
+<br><br>O Blog como Marketing Digital  
+Baseando nesse crescimento de mercado (Salão de Beleza), o foco seria o desenvolvimento de um Blog como marketing digital para nail designer. O Blog atrairia mais clientes impactando diretamente no faturamento. 
+<br><br>O Blog teria que solucionar algumas perguntas, sendo elas: 
+Como atrair mais clientes como nail designer? O que postar sendo nail designer? Como divulgar meu trabalho como nail designer? Essas são dúvidas bastante comuns de quem está pensando em trabalhar com esmalterias ou já está na área, mas precisa aumentar o faturamento. 
+
+
+			</p>
+            <br><br>
+			<a href="{% url 'home_blog' %}" class="button">Voltar</a>
+            
+		</div>
+
+		<div id="area-lateral">
+			
+
+			<div class="conteudo-lateral">
+				<h3>Postagens recentes</h3>
+				
+				<div class="postagem-lateral">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<a href="">Leia mais</a>
+				</div>
+
+				<div class="postagem-lateral" style="border-bottom: none;">
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+					<a href="">Leia mais</a>
+				</div>
+
+			</div>
+
+			<div class="conteudo-lateral">
+				<h3>Categorias</h3>
+				
+				<a href="">Jogos</a><br>
+				<a href="">Celulares</a><br>
+				<a href="">Informática</a><br>
+				<a href="">Eletrônicos</a><br>
+				<a href="">Jogos</a><br>
+
+			</div>
+
+
+		</div>
+
+		<div id="rodape">
+			Todos os direitos reservados
+		</div>
+
+	</div>
+
+</body>
+</html>

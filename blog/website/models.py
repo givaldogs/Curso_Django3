@@ -16,8 +16,6 @@ class Contact(models.Model):
     def __str__(self) -> str:
         return self.name
     
-
-
 class Post(models.Model):
     title = models.CharField(max_length=100)
     sub_title= models.CharField(max_length=200)
@@ -28,6 +26,7 @@ class Post(models.Model):
         default=Categories.GR,
     )
     deleted = models.BooleanField(default=False)
+    imagem = models.ImageField(upload_to='posts', null=True, blank=True)
     
     def __str__(self):
         return self.title
@@ -35,9 +34,7 @@ class Post(models.Model):
     def full_name(self):
         return self.title + self.sub_title
     
-    def get_category_label(self):
-        #return  self.categories.__dict__
-        #return self.get_categories_display()
-        return self.categories
+    # def get_categories_display(self):
+    #     return self.get_categories_display()
     
     full_name.admin_order_field = 'title'

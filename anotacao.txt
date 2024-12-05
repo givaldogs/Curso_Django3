@@ -53,6 +53,8 @@ aula 5
 python manage.py createsuperuser
 Usuario gival
 senha Familiaggs
+no diretoro univesp_tcc_2024\curso\blog
+a senha do django é univesp123
 
  Criar um app
 (venv) C:\Curso_Django_Udemy\blog>
@@ -100,9 +102,34 @@ git remote add origin https://github.com/givaldogs/Curso_Django3.git
 
 Aula 14- Personalizando o Django admin e utilizando novo recurso da versao 3
 
+===================================Github para entrega do trabalho
+
+echo "# tcc_blog_univesp" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/givaldogs/tcc_blog_univesp.git
+git push -u origin main
+…or push an existing repository from the command line
+git remote add origin https://github.com/givaldogs/tcc_blog_univesp.git
+git branch -M main
+git push -u origin main
+===================================
 ------------------- aula 16, site template do blog
 http://htmlSup.net/strata
 ---------------
 =========================
 
+erro na imagem
 
+=========================
+django serving media file development
+
+A imagem esta nesta pasta:
+C:\Curso_Django_Udemy\blog\media\posts
+
+mas, img src=imagem.jpeg , esta procurando na url:
+http://localhost:8000/media/posts/imagem7.jpeg 
+
+404 (Not Found)Understand this errorAI

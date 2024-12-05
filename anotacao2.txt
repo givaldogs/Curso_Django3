@@ -1,0 +1,221 @@
+Link:  https://us.bbcollab.com/guest/96cd5fd9063544208b676123a8154329 
+
+pesquisa no google :
+django media files   
+
+django image Fields
+
+django serving media file development
+
+-----
+media/posts/imagem7.jpeg
+C:\Curso_Django_Udemy\blog\media\posts
+
+*********************************************
+github.com/Gpzim98/
+
+/
+===========================================
+Preparando o ambiente
+sudo apt-get install python3-venv
+Criar ambiente virtual
+python3 -m venv venv
+
+Repositório clone
+git clone your-url.git
+
+Requisitos de instalação  pip install -r requirements.txt
+
+Execute o comando collectstatic python manage.py collectstatic
+
+Crie o banco de dados python manage.py migrate
+
+Criar um superusuário python manage.py createsuperuser
+
+Configurar arquivos estáticos e de mídia
+Certifique-se de que seu settings.py tenha as seguintes configurações:
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+Execute Django collectstatic python manage.py collectstatic
+Instalar e configurar
+Instale o uwsgi no seu ambiente virtual
+sudo apt-get install python3.6-dev
+sudo apt-get install build-essential libssl-dev libffi-dev python-dev
+pip install wheel
+pip install uwsgi
+Instalar e iniciar o Nginx
+sudo apt-get install nginx
+sudo /etc/init.d/nginx start
+Configurar Nginx
+Crie o arquivo uwsgi_params no caminho do seu projeto
+vim uwsgi_params
+
+---- file content -----
+
+uwsgi_param  QUERY_STRING       $query_string;
+uwsgi_param  REQUEST_METHOD     $request_method;
+uwsgi_param  CONTENT_TYPE       $content_type;
+uwsgi_param  CONTENT_LENGTH     $content_length;
+
+uwsgi_param  REQUEST_URI        $request_uri;
+uwsgi_param  PATH_INFO          $document_uri;
+uwsgi_param  DOCUMENT_ROOT      $document_root;
+uwsgi_param  SERVER_PROTOCOL    $server_protocol;
+uwsgi_param  REQUEST_SCHEME     $scheme;
+uwsgi_param  HTTPS              $https if_not_empty;
+
+uwsgi_param  REMOTE_ADDR        $remote_addr;
+uwsgi_param  REMOTE_PORT        $remote_port;
+uwsgi_param  SERVER_PORT        $server_port;
+uwsgi_param  SERVER_NAME        $server_name;
+Crie o arquivo de configuração NGINX em /etc/nginx/sites/available
+upstream django {
+    server unix:///home/ubuntu/django-apache-nginx-uwsgi-vps-ubuntu/mysite.sock; 
+}
+
+server {
+    listen      8000;
+    server_name example.com;
+    charset     utf-8;
+
+    client_max_body_size 75M; 
+
+    location /media  {
+        alias /home/ubuntu/django-apache-nginx-uwsgi-vps-ubuntu/media; 
+    }
+
+    location /static {
+        alias /home/ubuntu/django-apache-nginx-uwsgi-vps-ubuntu/static;
+    }
+
+    location / {
+        uwsgi_pass  django;
+        include     /home/ubuntu/django-apache-nginx-uwsgi-vps-ubuntu/uwsgi_params; 
+    }
+}
+Crie um link simbólico em sites habilitados sudo ln -s ~/caminho/para/seu/meusite/meusite_nginx.conf /etc/nginx/sites-enabled/
+
+Reinicie o Nginx sudo /etc/init.d/nginx restart
+
+Baixe uma imagem para a pasta de mídia e teste
+
+Execute e teste usando soquetes Unix uwsgi --socket mysite.sock --module mysite.wsgi --chmod-socket=666
+
+Crie o arquivo ini
+
+[uwsgi]
+chdir           = /home/ubuntu/django-apache-nginx-uwsgi-vps-ubuntu
+module          = django_vps.wsgi
+home            = /home/ubuntu/venv
+master          = true
+processes       = 10
+socket          = /home/ubuntu/django-apache-nginx-uwsgi-vps-ubuntu/mysite.sock
+vacuum          = true
+chmod-socket    = 666
+Testando com arquivo .ini uwsgi --ini mysite_uwsgi.ini
+Configurando o uWSGI como modo Emperor
+sudo mkdir /etc/uwsgi
+sudo mkdir /etc/uwsgi/vassals
+sudo ln -s /home/ubuntu/django-apache-nginx-uwsgi-vps-ubuntu/mysite_uwsgi.ini /etc/uwsgi/vassals/
+uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-data
+Configurar systemctl para iniciar na inicialização
+https://uwsgi-docs.readthedocs.io/en/latest/Systemd.html
+
+cd /etc/systemd/system/
+
+sudo vim djangovps.service
+
+
+======
+[Unit]
+Description=Django VPS uWSGI Emperor
+After=syslog.target
+
+[Service]
+ExecStart=/home/ubuntu/venv/bin/uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-data
+RuntimeDirectory=uwsgi
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+User=ubuntu
+
+[Install]
+WantedBy=multi-user.target
+======
+
+sudo chmod 664 /etc/systemd/system/djangovps.service
+
+sudo systemctl daemon-reload
+
+sudo systemctl enable djangovps.service
+
+ sudo systemctl start djangovps.service
+
+ sudo systemctl status djangovps.service
+
+journalctl -u djangovps.service
+
+Configurar Apache2 com Nginx como um proxy reverso
+desabilitar o link simbólico padrão do nginx para abrir a porta 80
+ cd /etc/nginx/sites-enabled/
+ sudo rm -rf default
+ sudo /etc/init.d/nginx restart
+sudo apt-get install apache2
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+sudo a2enmod proxy_balancer
+sudo a2enmod lbmethod_byrequests
+sudo systemctl restart apache2
+
+Criando o Vhost
+cd /etc/apache2/sites-available
+sudo vim django_vps.conf
+<VirtualHost *:80>
+    ServerName 52.16.70.162
+    ProxyPass / http://127.0.0.1:8000/
+    ProxyPassReverse / http://127.0.0.1:8000/
+</VirtualHost>
+Habilitar link simbólico em site-enable
+sudo ln -s /etc/apache2/sites-available/django_vps.conf /etc/apach
+e2/sites-enabled/
+Editar vhost padrão para seu site extra
+Configurar Django para usar Postgres DB
+sudo apt-get install python-pip python-dev libpq-dev postgresql postgresql-contrib
+adduser <username>
+sudo su - postgres
+psql
+\password
+\q
+createuser --interactive
+createdb <database name>
+psql
+ALTER DATABASE <database name> OWNER TO <role name>;
+ALTER USER <username> WITH PASSWORD '<new password>';
+add psycopg2 on requirements.txt
+push + pull
+install requirements.txt
+Consultando o banco de dados
+sudo su
+su postgres
+psql
+\list
+\c djangodb
+\dt ( show tables )
+select * from auth_user;
+\q
+exit
+
+===========================================================
+<!--				
+				<img src="{% static 'post.imagem.url' % }" alt=""
+				 width="100px" height="100px">
+				<img src="{% static 'post.imagem.url' % }" alt=""
+				 width="100px" height="100px">
+				<img src="{{ post.imagem.url }}" alt=""
+				 -->
+			
